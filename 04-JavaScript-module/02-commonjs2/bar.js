@@ -8,7 +8,7 @@ function sayHello(name) {
 }
 
 setTimeout(() => {
-    exports.name = 'lilei';
+    module.exports.name = 'lilei';
 }, 1000);
 exports.name = name;
 exports.age = age;

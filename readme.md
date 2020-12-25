@@ -74,3 +74,70 @@ $ nvm uninstall [version] //卸载node
 ```
 global.  按两次tab
 ```
+
+- 浅拷贝就是引用赋值
+
+## module.exports
+
+- CommonJS中
+
+## 情况一: X是一个核心模块，比如path、http
+    - 直接返回核心模块，并且停止查找
+
+## 情况二: X是以./或../或/(根目录) 开头的
+    第一步： 将X作为一个文件在对应的目录下查找;
+    - 1. 如果有后缀名，按照后缀名的格式查找对应的文件
+    - 2. 如果没有后缀名，会按照如下顺序:
+        1> 直接查找文件X
+        2> 查找X.js文件
+        3> 查找X.json文件
+        4> 查找X.node文件
+    第二步：没有找到对应的文件，将X作为工业目录
+        查找目录下面的index文件
+            1>  查找X/index.js文件
+            2>  查找X/index.json文件
+            3>  查找X/index.node文件
+
+    如果没有找到，那么报错： not found
+
+## 情况三： 直接是一个X (没有路径) ,并且X不是一个核心模块
+    - node_modules 中递归查找
+    /Users/michaelhee/Desktop/Node/TestCode/04_learn_node/05_javascript_module/02_commonjs/main.js中编写
+    require('michael')
+    - 查找路径依次为：
+    paths: [
+        '/Users/michaelhee/Desktop/Node/TestCode/04_learn_node/05_javascript_module/02_commonjs/node_modules',
+        '/Users/michaelhee/Desktop/Node/TestCode/04_learn_node/05_javascript_module/node_modules',
+        '/Users/michaelhee/Desktop/Node/TestCode/04_learn_node/node_modules',
+        '/Users/michaelhee/Desktop/Node/TestCode/node_modules',
+        '/Users/michaelhee/Desktop/node_modules',
+        '/Users/michaelhee/node_modules',
+        '/Users/node_modules',
+        'node_modules',
+    ]
+    - 如果上面的路径中都没有找到，那么报错 not found
+```
+console.log(module)
+```
+
+```
+Module {
+  id: '.',
+  path: 'e:\\code\\node\\04-JavaScript-module\\02',
+  exports: {},
+  filename: 'e:\\code\\node\\04-JavaScript-module\\02\\test.js',
+  loaded: false,
+  children: [],
+  paths: [
+    'e:\\code\\node\\04-JavaScript-module\\02\\node_modules',
+    'e:\\code\\node\\04-JavaScript-module\\node_modules',
+    'e:\\code\\node\\node_modules',
+    'e:\\code\\node_modules',
+    'e:\\node_modules'
+  ]
+}
+```
+
+## 模块的加载过程
+
+- 结论一： 
