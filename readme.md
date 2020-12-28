@@ -141,3 +141,16 @@ Module {
 ## 模块的加载过程
 
 - 结论一： 
+
+
+```
+在线加速github下载：
+
+http://toolwa.com/github/
+https://d.serctl.com/
+https://gh.api.99988866.xyz/
+https://g.ioiox.com/
+http://gitd.cc/
+https://gh.sky-and-poem.fun/
+https://github.zhlh6.cn/
+```
